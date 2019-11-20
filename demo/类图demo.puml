@@ -1,0 +1,36 @@
+@startuml
+
+title 类图
+scale 1.5
+/'组合关系(composition)'/
+class Human {
+    - Head mHead;
+    - Heart mHeart;
+    ..
+    - CreditCard mCard;
+    --
+    + void travel(Vehicle vehicle);
+}
+
+Human *-up- Head : contains >
+Human *-up- Heart : contains >
+
+/'聚合关系(aggregation)'/
+Human o-left- CreditCard : owns >
+
+/'依赖关系(dependency)'/
+Human .down.> Vehicle : dependent
+
+/'关联关系(association'/
+Human -down-> Company : associate
+
+/'继承关系(extention)'/
+interface IProgram {
+    + void program();
+}
+class Programmer {
+    + void program();
+}
+Programmer -left-|> Human : extend
+Programmer .up.|> IProgram : implement
+@enduml

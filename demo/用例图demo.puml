@@ -1,0 +1,13 @@
+@startuml
+
+left to right direction
+actor 消费者
+actor 销售员
+rectangle 买单 {
+消费者 -- (买单)
+(买单) .> (付款) : include
+(帮助) .> (买单) : extends
+(买单) -- 销售员
+}
+
+@enduml
