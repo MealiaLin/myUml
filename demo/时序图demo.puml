@@ -1,0 +1,70 @@
+@startuml
+用户 -> WebsiteSettingFragment: 进入页面
+note left
+    示例1:
+    参与者之间的消息传递-实线箭头
+    此处是标注，可以多写点注释
+end note
+WebsiteSettingFragment -> WebsiteSettingFragment: 获取列表数据，注册广播
+note left
+    示例2：
+    自己给自己发消息
+end note
+WebsiteSettingFragment -> WebsiteSettingFragment: 展示信息弹框
+WebsiteSettingFragment --> 用户: 呈现页面
+note left
+    示例3
+    参与者之间的消息传递-虚线箭头
+end note
+
+
+
+opt 绑定/切换
+    用户 -> WebsiteLoginActivity: 绑定/切换站点账号信息
+    WebsiteLoginActivity -> WebsiteLoginActivity: 查询任务状态，注册广播
+    WebsiteLoginActivity --> 用户
+end opt
+note left #00dddd
+    示例4: note可以改变颜色
+    组合片段-opt，表示选项
+    包含一个可能发生或不发生的序列？？（不太了解）
+end note
+
+
+== 此处是分割线 ==
+
+alt 情况1
+    用户 -> WebsiteLoginActivity: xxxxxx
+    WebsiteLoginActivity -> WebsiteLoginActivity: xxxxxx
+    WebsiteLoginActivity --> 用户
+else 情况2：
+    用户 -> WebsiteSettingFragment: xxxxxx
+    WebsiteSettingFragment -> WebsiteLoginActivity: xxxxxx
+    WebsiteLoginActivity --> 用户
+end alt
+note left
+    示例5：
+    组合片段-alt，用来表示抉择
+    相当于经典的if..else..
+end note
+
+par
+WebsiteSettingFragment -> WebsiteSettingFragment: 操作1
+WebsiteSettingFragment -> WebsiteSettingFragment: 操作2
+end par
+note left
+    示例6：
+    组合片段-par，用来表示并行
+end note
+
+loop
+用户 -> WebsiteSettingFragment: 1
+WebsiteSettingFragment -> WebsiteSettingFragment: 2
+WebsiteSettingFragment --> 用户: 3
+end loop
+note left
+    示例7：
+    组合片段-loop，用来表示循环
+end note
+
+@enduml
