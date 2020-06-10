@@ -1,10 +1,20 @@
 @startuml
+'注解:定义节点
+participant 用户
+participant WebsiteSettingFragment
+participant WebsiteLoginActivity
+
 用户 -> WebsiteSettingFragment: 进入页面
+activate 用户
 note left
     示例1:
     参与者之间的消息传递-实线箭头
     此处是标注，可以多写点注释
+
+    activate 表示一个活动
+    配套用deactivate表示活动的结束
 end note
+activate WebsiteSettingFragment
 WebsiteSettingFragment -> WebsiteSettingFragment: 获取列表数据，注册广播
 note left
     示例2：
@@ -12,10 +22,19 @@ note left
 end note
 WebsiteSettingFragment -> WebsiteSettingFragment: 展示信息弹框
 WebsiteSettingFragment --> 用户: 呈现页面
+deactivate WebsiteSettingFragment
+deactivate 用户
 note left
     示例3
     参与者之间的消息传递-虚线箭头
+    deactivate表示活动的结束
+
+    虚线箭头+deactivate也可以用return简单表示
+    可替换为以下语句：
+    return 呈现页面
+    deactivate 用户
 end note
+
 
 
 
